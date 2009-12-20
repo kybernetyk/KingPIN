@@ -20,7 +20,8 @@ Which modems are supported?
 ---------------------------
 KingPIN works with the Huawei e270 USB UMTS modem and should work with any other USB UMTS modem. (That does the PIN authentification through the AT+CPIN command.)
 
-You need the Huawei OS X drivers installed.
+### e270 specific
+You'll need the Huawei OS X drivers installed.
 You can find them here (10.6 drivers): 
 OS X 10.6 e270 drivers: http://www.huaweidevice.com/resource/mini/200910149695/testmobile1014/MobileConnectDriver(4.16.00.00)(for%20Mac%20OS%20X%2010.4-10.6).zip
 
