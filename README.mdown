@@ -10,7 +10,7 @@ Why?
 ----
 OS X lacks an PIN prompt when you try to connect over an USB UMTS modem with an PIN-enabled SIM card inserted. 
 
-At least this is true for my Huawei e270 UMTS modem. So to enter the PIN after connection my modem to my mac I hace to start Huawei's bloated java-app. (Or was it a Rosetta app?)
+At least this is true for my Huawei e270 UMTS modem. So to enter the PIN I have to start Huawei's bloated java-app first. (Or was it a Rosetta app?)
 
 How?
 ----
@@ -23,6 +23,7 @@ KingPIN works with the Huawei e270 USB UMTS modem and should work with any other
 ### e270 specific
 You'll need the Huawei OS X drivers installed.
 You can find them here (10.6 drivers): 
+
 OS X 10.6 e270 drivers: http://www.huaweidevice.com/resource/mini/200910149695/testmobile1014/MobileConnectDriver(4.16.00.00)(for%20Mac%20OS%20X%2010.4-10.6).zip
 
 Risks?
