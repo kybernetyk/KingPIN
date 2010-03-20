@@ -36,4 +36,5 @@ BSD
 
 Software used?
 --------------
+[Gutscheine REST API](http://www.gutscheine.me)
 [AMSerialPort by Andreas Mayer](https://sourceforge.net/projects/amserial/)
