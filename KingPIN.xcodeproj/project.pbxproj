@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0318D82E10DD7F6B00A48B96 /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 0318D82D10DD7F6B00A48B96 /* NSString+Search.m */; };
 		0318D87310DDB39500A48B96 /* BSD License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0318D87210DDB39500A48B96 /* BSD License.txt */; };
+		0348BBDA13DF0AC60012646B /* kingpin.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0348BBD913DF0AC60012646B /* kingpin.icns */; };
+		038DCF7D13DF1384006E051F /* FXKingPinWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 038DCF7C13DF1384006E051F /* FXKingPinWindow.m */; };
 		03D7209410DD6BC100B58980 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D7209310DD6BC100B58980 /* MainWindowController.m */; };
 		03D720BB10DD6DDC00B58980 /* AMSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D720B010DD6DDC00B58980 /* AMSerialPort.m */; };
 		03D720BC10DD6DDC00B58980 /* AMSerialPort_Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D720B210DD6DDC00B58980 /* AMSerialPort_Deprecated.m */; };
@@ -28,6 +30,9 @@
 		0318D82C10DD7F6B00A48B96 /* NSString+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Search.h"; sourceTree = "<group>"; };
 		0318D82D10DD7F6B00A48B96 /* NSString+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Search.m"; sourceTree = "<group>"; };
 		0318D87210DDB39500A48B96 /* BSD License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BSD License.txt"; sourceTree = "<group>"; };
+		0348BBD913DF0AC60012646B /* kingpin.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = kingpin.icns; sourceTree = "<group>"; };
+		038DCF7B13DF1384006E051F /* FXKingPinWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXKingPinWindow.h; sourceTree = "<group>"; };
+		038DCF7C13DF1384006E051F /* FXKingPinWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXKingPinWindow.m; sourceTree = "<group>"; };
 		03D7209210DD6BC100B58980 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		03D7209310DD6BC100B58980 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		03D720AD10DD6DDC00B58980 /* AMSDKCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSDKCompatibility.h; sourceTree = "<group>"; };
@@ -77,6 +82,8 @@
 			children = (
 				03D7209210DD6BC100B58980 /* MainWindowController.h */,
 				03D7209310DD6BC100B58980 /* MainWindowController.m */,
+				038DCF7B13DF1384006E051F /* FXKingPinWindow.h */,
+				038DCF7C13DF1384006E051F /* FXKingPinWindow.m */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 		29B97314FDCFA39411CA2CEA /* KingPIN */ = {
 			isa = PBXGroup;
 			children = (
+				0348BBD913DF0AC60012646B /* kingpin.icns */,
 				03D7207F10DD6B8800B58980 /* Main Window */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -211,7 +219,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "KingPIN" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* KingPIN */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -229,6 +241,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				0318D87310DDB39500A48B96 /* BSD License.txt in Resources */,
+				0348BBDA13DF0AC60012646B /* kingpin.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +262,7 @@
 				03D720BF10DD6DDC00B58980 /* AMSerialPortList_Deprecated.m in Sources */,
 				03D720C010DD6DDC00B58980 /* AMStandardEnumerator.m in Sources */,
 				0318D82E10DD7F6B00A48B96 /* NSString+Search.m in Sources */,
+				038DCF7D13DF1384006E051F /* FXKingPinWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

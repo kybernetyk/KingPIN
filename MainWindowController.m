@@ -75,6 +75,7 @@
 
 - (void) awakeFromNib
 {
+	errored = NO;
 	NSDictionary *defs = [NSDictionary dictionaryWithObjectsAndKeys: @"Your Pin", @"lastUsedPin", nil];
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defs];
@@ -84,7 +85,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRemovePorts:) name:AMSerialPortListDidRemovePortsNotification object:nil];
 	
 	[AMSerialPortList sharedPortList]; // initialize port list to arm notifications
-	
+
 	
 	[self enumerateSerialDevices];
 	wrongPinEntries = 0;
@@ -94,13 +95,14 @@
 #pragma mark IBActions
 - (IBAction) sendPin: (id) sender
 {
+	errored = NO;
 	if (wrongPinEntries >= 2)
 	{
 		NSAlert *al = [NSAlert alertWithMessageText: @"PIN error warning."
 									  defaultButton: @"Ok" 
 									alternateButton: nil
 										otherButton: nil
-						  informativeTextWithFormat: @"You have entered the wrong PIN twice. Please disconnect and reconnect the modem from your mac to reset the counter. Entering the wrong PIN three times will most likely disable the SIM card.", nil];
+						  informativeTextWithFormat: @"You have entered the wrong PIN twice. Please disconnect and reconnect the modem from your mac to reset the counter. Entering the wrong PIN three times without a reset will most likely disable the SIM card.", nil];
 		[al runModal];
 		return;
 	}
@@ -129,10 +131,14 @@
 
 	NSLog(@"opening port %@", devicePath);
 	
+	[statusBar setStringValue: [NSString stringWithFormat: @"Opening port %@ ...", devicePath]];
+	
 	// open port - may take a few seconds ...
 	if ([serialPort open]) 
 	{
-		NSLog(@"port open.");
+		//NSLog(@"port open.");
+		
+		[statusBar setStringValue: [NSString stringWithFormat: @"Port opened."]];
 
 		// listen for data asynchronous 
 		[serialPort readDataInBackground];
@@ -141,11 +147,13 @@
 		if([serialPort isOpen]) 
 		{ // in case an error occured while opening the port
 			pinString = [NSString stringWithFormat: @"AT+CPIN=%@\r",pinString];
-			NSLog(@"sending %@ ...", pinString);
+			//NSLog(@"sending %@ ...", pinString);
+			[statusBar setStringValue: [NSString stringWithFormat: @"Sending %@ ...", pinString]];
 			[serialPort writeString: pinString usingEncoding:NSUTF8StringEncoding error:NULL];
 		}
 		else
-		{		
+		{	
+			[statusBar setStringValue: [NSString stringWithFormat: @"Error: Port closed."]];
 			NSLog(@"port %@ was closed?!", devicePath);
 			[serialPort release];
 			serialPort = nil;
@@ -154,6 +162,7 @@
 	} 
 	else 
 	{ 
+		[statusBar setStringValue: [NSString stringWithFormat: @"Error: Could not open port %@ ...", devicePath]];
 		NSLog(@"could not open port %@", devicePath);
 		[serialPort release];
 		serialPort = nil;
@@ -192,6 +201,8 @@
 				wrongPinEntries ++;
 				[al runModal];
 			}
+			[statusBar setStringValue: [NSString stringWithFormat: @"Error: %@", text]];
+			errored = YES;
 		}
 		[text release];
 
@@ -204,6 +215,8 @@
 		}
 		else
 		{
+			if (!errored)
+				[statusBar setStringValue: [NSString stringWithFormat: @"Succes."]];
 			//we got an OK or ERROR so we close the connection to let other apps use the port
 			NSLog(@"port empty. release!");
 			[serialPort close];
@@ -265,6 +278,19 @@
 		[[NSUserDefaults standardUserDefaults] setObject: deviceName forKey: @"lastUsedDevice"];
 		
 	}
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+	NSNotificationCenter *c = [NSNotificationCenter defaultCenter];
+	[c postNotificationName: @"window_will_close" object: self];
+//	[self autorelease];
+}
+
+- (void) windowDidLoad
+{
+	NSLog(@"window did load!");
+//	[[self window] makeKeyWindow];
+	NSLog(@"can? %@", [self window]);
 }
 
 @end

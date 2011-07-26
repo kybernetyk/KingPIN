@@ -11,9 +11,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MainWindowController.h"
+#import "FXKingPinWindow.h"
 
 @interface KingPINAppDelegate : NSObject <NSApplicationDelegate> 
 {
+	int num_of_windows;
+	
+	IBOutlet MainWindowController *mwc;
+	IBOutlet FXKingPinWindow *window;
 }
+
+- (IBAction) repopenWindow: (id) sender;
 
 @end

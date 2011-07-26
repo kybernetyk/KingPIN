@@ -22,7 +22,8 @@
 	AMSerialPort *serialPort;
 	NSInteger wrongPinEntries;
 	NSArray *enumeratedDevices;
-
+	IBOutlet NSTextField *statusBar;
+	BOOL errored;
 }
 
 - (void) enumerateSerialDevices;
